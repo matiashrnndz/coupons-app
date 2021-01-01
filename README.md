@@ -1,4 +1,4 @@
-# coupons-microservices-example
+# coupons-app (microservices example)
 
 [Project done on Nov 2019.]
 
