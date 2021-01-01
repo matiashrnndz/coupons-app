@@ -1,0 +1,75 @@
+<% if current_user.nil? %>
+
+<div class='container h-100'>
+  <div class='d-flex justify-content-center h-100'>
+    <div class='user_card'>
+      <div class='d-flex justify-content-center'>
+        <div class='brand_logo_container'>
+          <img src='https://townplannerstl.com/wp-content/uploads/2016/03/Local-Coupons-circle.png' class='brand_logo' alt='Logo'>
+        </div>
+      </div>
+      <div class='d-flex justify-content-center form_container'>
+        <%= form_with url: sessions_signin_path do |form| %>
+          <div class='input-group mb-3'>            
+            <%= form.text_field 'email', size: 40, required: true, placeholder: 'email', class: 'form-control input_user' %>
+          </div>
+          <div class='input-group mb-2'>            
+            <%= form.password_field 'password', size: 40, required: true, placeholder: 'password', class: 'form-control input_pass' %>
+          </div>
+          <div class='d-flex justify-content-center mt-3 login_container'>            
+            <%= form.submit 'Sign in' , class: 'btn login_btn' %>
+          </div>  
+      </div>
+      <% end %>
+      <div class='mt-4'>
+        <div class='d-flex justify-content-center links'>
+          Don't have an account? &nbsp;&nbsp; <%= link_to('Sign up', new_user_path) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+
+<% else %>
+
+  <div class='page-title'>Promotions</div>
+
+  <div class='container container_form_user' style="width:100%;">
+
+    <div class="promo_filter">      
+      <div>
+        <%= form_tag( '/promotion_definitions', :method => :get ) do %>
+            <%= label_tag 'Filter by name' %>
+            <%= text_field_tag :by_name %>
+            <%= label_tag 'Filter by code' %>
+            <%= text_field_tag :by_code %>
+            <%= label_tag 'Filter by status' %>
+            <%= select_tag "by_state", options_for_select([["All", ""],["Active","active"], ["Inactive","inactive"] ])%>
+            <%= label_tag 'Filter by type' %>
+            <%= select_tag "by_type", options_for_select([["All", ""],["Coupon","coupon"], ["Discount","discount"] ])%>
+            <%= submit_tag 'Apply filters' , class: 'filter-btn' %>
+        <% end  %>
+        <%= button_to('Clear filters', promotion_definitions_path, method: :get, class: 'btn btn-sm btn-outline-dark py-0 btn_line') %></br>
+      </div>
+    </div>  
+
+    <% if current_user_is_admin %>
+      <div style="margin-top: 15px;">
+        <%= button_to('Add Promotion', new_promotion_definition_path, method: :get,  class: 'btn form_btn_top btn-sm') %>
+      </div>
+    <% end %>
+
+    <div>
+      <%= render 'promotions', locals: {promo_definitions: @promo_definitions} %>
+    </div>
+
+    
+    <% if current_user_is_admin %>
+      <%= button_to('Create Token', new_token_path, method: :get,  class: 'btn form_btn') %>
+    <% end %>
+    <%= button_to('User Profile', current_user, method: :get,  class: 'btn form_btn') %>
+    
+
+  </div>
+
+<% end %>

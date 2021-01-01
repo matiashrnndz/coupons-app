@@ -1,0 +1,57 @@
+<div class='page-title'>Promotion <%= @promo_definition['attributes']['name'] %></div>
+
+<div class='container container_form_user'>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">Name:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<strong><%= @promo_definition['attributes']['name']%></strong></div>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">Code:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<strong><%= @promo_definition['attributes']['code'] %></strong></div>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">Expires:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<strong><%= format_date(@promo_definition['attributes']['expiration_date'].to_date, false) %></strong></div>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">State:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<strong><%= @promo_definition['attributes']['promotion_state'] %></strong></div>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">Type:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<strong><%= @promo_definition['attributes']['promotion_type'] %></strong></div>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">Value:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<strong><%= @promo_definition['attributes']['value'] %></strong></div>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">Discount type:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<strong><%= @promo_definition['attributes']['discount_type'] %></strong></div>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">Attributes:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<strong><%= @promo_definition['attributes']['promotion_attributes'] %></strong></div>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">Conditions:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<strong><%= @promo_definition['attributes']['conditions'] %></strong></div>
+  </div>
+
+  <div style="margin-top: 20px;">
+    <%= button_to('Show details', promotion_definition_promotions_path(@promo_definition['attributes']['id']), method: :get,  class: 'btn form_btn') %>
+  </div>
+  
+  <div >  
+    <%= button_to('<< Back', promotion_definitions_path,  method: :get, class: 'btn btn-sm btn-outline-secondary') %>
+  </div>
+</div>

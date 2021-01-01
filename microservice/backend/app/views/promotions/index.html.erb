@@ -1,0 +1,11 @@
+<div class='page-title'>Details of promotion <%= @promo_definition.name %></div>
+
+
+<div class='container-fluid container_for_cards'>
+
+  <div>
+    <%= render 'promotions', locals: {promotions: @promotions} %>
+    <%= button_to('<< Back', @promo_definition,  method: :get, class: 'btn btn-sm btn-outline-secondary') %>
+  </div>
+
+</div>

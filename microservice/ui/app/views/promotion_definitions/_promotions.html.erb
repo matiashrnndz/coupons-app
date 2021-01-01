@@ -1,0 +1,47 @@
+<table class="table  table-striped table-" style="margin-top: 10px; margin-bottom: 20px;">
+  
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Code</th>
+      <th scope="col">State</th>
+      <th scope="col">Type</th>
+      <th scope="col" width="50%">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  <% @promo_definitions.each do |promo| %>
+    <tr>
+      <td><%= promo['attributes']['name'] %></td>
+      <td><%= promo['attributes']['code'] %></td>
+      <td><%= promo['attributes']['promotion_state'] %></td>
+      <td><%= promo['attributes']['promotion_type'] %></td>
+
+      <td>
+        <div>
+        <% unless current_user_is_financer %>
+          <%= button_to('View', promotion_definition_path(promo['id']), method: :get, class: 'btn btn-sm btn-outline-info py-0 btn_line') %>
+        <% end %>
+        <% if current_user_is_admin %>
+          <%= button_to('Edit', edit_promotion_definition_path(promo['id']), method: :get, class: 'btn btn-sm btn-outline-primary py-0 btn_line') %>
+          <%= button_to('Delete', promotion_definition_path(promo['id']), method: :delete, data: { confirm: 'Delete promotion?' }, class: 'btn btn-sm btn-outline-danger py-0 btn_line') %>
+        <% end %>
+
+        <%= button_to('Report', promotion_definition_report_path(promo['id']), method: :get, class: 'btn btn-sm btn-outline-secondary py-0 btn_line_separator') %>
+        
+        <% unless current_user_is_financer %>
+          <%= button_to('Demo Report', promotion_definition_demographic_report_path(promo['id']), method: :get, class: 'btn btn-sm btn-outline-secondary py-0 btn_line_separator') %>
+        <% end %>
+        <% if promo['attributes']['promotion_type'] == 'coupon' && current_user_is_admin %>
+          <%= button_to('Generate coupons', new_promotion_definition_promotion_path(promo['id']), method: :get, class: 'btn btn-sm btn-outline-secondary py-0 btn_line') %>
+        <% end %>
+        </div>
+      </td>
+
+    </tr>
+  <%end%>
+  </tbody>
+</table>
+
+  

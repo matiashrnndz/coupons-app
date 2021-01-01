@@ -1,0 +1,34 @@
+<div class='page-title'>Edit promotion <%= @promo_definition.name %></div>
+
+<div class='container container_form_user'>
+  <div>
+    <%= form_for @promo_definition do |f| %>
+
+      <div class="form-group">
+        <label>Name</label>
+        <div>
+          <%= f.text_field :name, id: 'test',size: 40, required: true, placeholder: 'Name', class: 'form-control' %>
+        </div>
+      </div>
+      
+      <div>
+        <%= f.label 'State: ' %>&nbsp;&nbsp;&nbsp;
+      
+        <%= f.radio_button :promotion_state, 'active' %> 
+        <%= label :promotion_state_active, 'Active' %>
+        <%= f.radio_button :promotion_state, 'inactive' %>
+        <%= label :promotion_state_inactive, 'Inactive' %>
+      </div>
+      
+      <div style="margin-top: 20px;">
+        <%= f.submit 'Edit' , class: 'btn form_btn' %>
+      </div>
+      
+    
+    <% end %>
+      
+    <div >  
+      <%= button_to('<< Back', root_path,  method: :get, class: 'btn btn-sm btn-outline-secondary') %>
+    </div>
+  </div>
+</div> 

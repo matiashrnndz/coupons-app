@@ -1,0 +1,14 @@
+<nav class='navbar navbar-expand-lg navbar-light' style='background-color: #cccccc'>
+  <img src='https://townplannerstl.com/wp-content/uploads/2016/03/Local-Coupons-circle.png' width='30' height='30' alt=''>&nbsp;
+  <%= link_to('Coupons', root_path, class: 'navbar-brand') %>          
+  <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
+    <span class='navbar-toggler-icon'></span>
+  </button>
+</nav>
+
+<div class='page-title'>New User</div>
+
+<div class='container container_form_user'>
+  <%= render 'form' %>
+  <%= button_to('<< Back', root_path,  method: :get, class: 'btn btn-sm btn-outline-secondary') %>
+</div>

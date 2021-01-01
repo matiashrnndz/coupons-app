@@ -1,0 +1,555 @@
+{
+	"info": {
+		"_postman_id": "b46ca095-e63f-494f-b86a-a19a4a17cfb6",
+		"name": "Kong",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "app-coupons-reports",
+			"item": [
+				{
+					"name": "SERVICE: app-coupons-reports",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"type": "text",
+								"value": "6c2c20726c6314ee75fd95fe37c4bd4ba3792a42c4bb04600716807e506d0f35"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"app-coupons-reports\",\n\t\"url\": \"https://app-coupons-reports.herokuapp.com/api/\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/kong-admin/services",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"kong-admin",
+								"services"
+							]
+						},
+						"description": "https://app-webproxy.herokuapp.com/kong-admin/services"
+					},
+					"response": []
+				},
+				{
+					"name": "ROUTE: /promo_stats",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"type": "text",
+								"value": "6c2c20726c6314ee75fd95fe37c4bd4ba3792a42c4bb04600716807e506d0f35"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"strip_path\": false,\n\t\"paths\": [\n\t\t\"/promo_stats\"\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/kong-admin/services/app-coupons-reports/routes",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"kong-admin",
+								"services",
+								"app-coupons-reports",
+								"routes"
+							]
+						},
+						"description": "https://app-webproxy.herokuapp.com/kong-admin/services"
+					},
+					"response": []
+				},
+				{
+					"name": "TEST: /promo_stats/1/summary with valid JWT",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJjb2RlcyI6WyIyWlVkT2xlRCJdLCJuYW1lIjoiZGRkIiwiZXhwIjoxNTc0MDE2NDQ3fQ.a2-zebbjULMv1vqJg6-1aeWW2T1ILoHqqJSPKR5mVvQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/promo_stats/1/summary",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"promo_stats",
+								"1",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TEST: /promo_stats/2/summary with invalid JWT",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJjb2RlcyI6WyIyWlVkT2xlRCJdLCJuYW1lIjoiZGRkIiwiZXhwIjoxNTc0MDE2NDQ3fQ.a2-zebbjULMv1vqJg6-1aeWW2T1ILoHqqJSPKR5mVvQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/promo_stats/2/summary",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"promo_stats",
+								"2",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TEST: /promo_stats/1/summary with no JWT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/promo_stats/1/summary",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"promo_stats",
+								"1",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "generic",
+			"item": [
+				{
+					"name": "GET: kong-admin/services",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "6c2c20726c6314ee75fd95fe37c4bd4ba3792a42c4bb04600716807e506d0f35",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/kong-admin/services",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"kong-admin",
+								"services"
+							]
+						},
+						"description": "https://app-webproxy.herokuapp.com/kong-admin/services"
+					},
+					"response": []
+				},
+				{
+					"name": "POST: kong-admin/services",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"type": "text",
+								"value": "6c2c20726c6314ee75fd95fe37c4bd4ba3792a42c4bb04600716807e506d0f35"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"cn-jokes\",\n\t\"url\": \"https://api.chucknorris.io/\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/kong-admin/services",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"kong-admin",
+								"services"
+							]
+						},
+						"description": "https://app-webproxy.herokuapp.com/kong-admin/services"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE: kong-admin/services/{name or id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "6c2c20726c6314ee75fd95fe37c4bd4ba3792a42c4bb04600716807e506d0f35",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/kong-admin/services/cn-jokes",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"kong-admin",
+								"services",
+								"cn-jokes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET: kong-admin/services/{name or id}/routes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"type": "text",
+								"value": "6c2c20726c6314ee75fd95fe37c4bd4ba3792a42c4bb04600716807e506d0f35"
+							}
+						],
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/kong-admin/services/cn-jokes/routes",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"kong-admin",
+								"services",
+								"cn-jokes",
+								"routes"
+							]
+						},
+						"description": "https://app-webproxy.herokuapp.com/kong-admin/services"
+					},
+					"response": []
+				},
+				{
+					"name": "POST: kong-admin/services/{name or id}/routes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"type": "text",
+								"value": "6c2c20726c6314ee75fd95fe37c4bd4ba3792a42c4bb04600716807e506d0f35"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"strip_path\": false,\n\t\"paths\": [\n\t\t\"/jokes\",\n\t\t\"/random\"\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/kong-admin/services/cn-jokes/routes",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"kong-admin",
+								"services",
+								"cn-jokes",
+								"routes"
+							]
+						},
+						"description": "https://app-webproxy.herokuapp.com/kong-admin/services"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE: kong-admin/routes/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "apikey",
+								"type": "text",
+								"value": "6c2c20726c6314ee75fd95fe37c4bd4ba3792a42c4bb04600716807e506d0f35"
+							}
+						],
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/kong-admin/routes/a8ad71bf-01cc-434d-b3c2-49e807819922",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"kong-admin",
+								"routes",
+								"a8ad71bf-01cc-434d-b3c2-49e807819922"
+							]
+						},
+						"description": "https://app-webproxy.herokuapp.com/kong-admin/services"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "app-coupons-api",
+			"item": [
+				{
+					"name": "SERVICE: app-coupons-api",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"type": "text",
+								"value": "6c2c20726c6314ee75fd95fe37c4bd4ba3792a42c4bb04600716807e506d0f35"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"app-coupons-api\",\n\t\"url\": \"https://app-coupons-api.herokuapp.com/\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/kong-admin/services",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"kong-admin",
+								"services"
+							]
+						},
+						"description": "https://app-webproxy.herokuapp.com/kong-admin/services"
+					},
+					"response": []
+				},
+				{
+					"name": "ROUTE: routes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "apikey",
+								"type": "text",
+								"value": "6c2c20726c6314ee75fd95fe37c4bd4ba3792a42c4bb04600716807e506d0f35"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"strip_path\": false,\n\t\"paths\": [\n\t\t\"/users\",\n\t\t\"/invitation\",\n\t\t\"/organizations\",\n\t\t\"/sessions\",\n\t\t\"/promotions\",\n\t\t\"/promotion_definitions\",\n\t\t\"/healthcheck\",\n\t\t\"/sidekiq\"\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/kong-admin/services/app-coupons-api/routes",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"kong-admin",
+								"services",
+								"app-coupons-api",
+								"routes"
+							]
+						},
+						"description": "https://app-webproxy.herokuapp.com/kong-admin/services"
+					},
+					"response": []
+				},
+				{
+					"name": "TEST: /session/signin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"diegoklappenbachb@gmail.com\",\n\t\"password\": \"asdasd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/sessions/signin",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"sessions",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TEST: /users/1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJvcmdhbml6YXRpb25faWQiOjEsImFkbWluIjp0cnVlLCJleHAiOjE1NzQwMjgzNTF9.nJu6hSkuoRTQCY1w66pVcS3_eJ_o-lC1iy1dZnWLGa4"
+							}
+						],
+						"url": {
+							"raw": "https://app-webproxy.herokuapp.com/users/1",
+							"protocol": "https",
+							"host": [
+								"app-webproxy",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

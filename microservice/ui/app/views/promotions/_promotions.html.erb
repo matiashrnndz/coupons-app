@@ -1,0 +1,30 @@
+<div class="row m-1" style="width: 100%;">
+
+<% @promotions.each do |promo| %>
+
+  <div class="card border-secondary mb-3 m-1" style="max-width: 18rem;">
+    <% if promo['attributes']['expiration_date'].to_date <= Date.today %> 
+      <div class="card-header"><span class="badge badge-pill badge-secondary">EXPIRED</span></div>
+    <% else %>
+      <% if promo['attributes']['uses'] > 0 %>
+        <div class="card-header"><span class="badge badge-pill badge-success">AVAILABLE</span></div>
+      <% else%>
+        <div class="card-header"><span class="badge badge-pill badge-secondary">USED</span></div>
+      <% end %>
+    <% end %>
+    
+
+    <div class="card-body text-secondary">
+      <h5 class="card-title text-info">Code: <%= promo['attributes']['code'] %></h5>
+      <div> <span style="color: #333333;">Remaining Uses:</span><span style="color: #888888;font-size:14px;"> <%= promo['attributes']['uses'] %></span></div>
+      <div> <span style="color: #333333;">Expiration Date:</span><span style="color: #888888;font-size:14px;"> <%= format_date(promo['attributes']['expiration_date'].to_date, false) %></span></div>
+      <div> <span style="color: #333333;">Creation Date:</span><span style="color: #888888;font-size:14px;"> <%= format_date(promo['attributes']['created_at'].to_date) %></span></div>
+      <div> <span style="color: #333333;">Modified Date:</span><span style="color: #888888;font-size:14px;"> <%= format_date(promo['attributes']['updated_at'].to_date) %></span></div>
+    </div>
+  </div>
+
+<% end %>
+
+</div>
+
+

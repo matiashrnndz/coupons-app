@@ -1,0 +1,174 @@
+/*body {background-color: #92a8d1;}*/
+
+/* GENERAL */
+
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background: #60a3bc !important;
+}
+
+/* LOGIN */
+
+.user_card {
+	height: 400px;
+	width: 350px;
+	margin-top: auto;
+	margin-bottom: auto;
+	background: #f39c12;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 5px;
+
+}
+.brand_logo_container {
+	position: absolute;
+	height: 170px;
+	width: 170px;
+	top: -75px;
+	border-radius: 50%;
+	background: #60a3bc;
+	padding: 10px;
+	text-align: center;
+}
+.brand_logo {
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	border: 2px solid #60a3bc;
+}
+.form_container {			
+	margin-top: 90px;  
+	margin-left: 9%;
+	margin-right: 9%;
+}
+.login_btn {
+	width: 100%;
+	background: #c0392b !important;
+	color: white !important;
+}
+.login_btn:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+.login_container {
+	padding: 0 2rem;
+}
+.input_user,
+.input_pass:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+
+/* SECTION TITLES */
+
+.page-title{
+	margin-top: 15px;
+	margin-bottom: 30px;
+	padding-left: 15px;
+	background-color: #cccccc; 
+	font-family: Arial, Helvetica, sans-serif;
+	border-radius: 0 10px 10px 0;
+	width: 20%;
+	font-size: 20px;
+	font-weight: bold;
+	border-color: #c0392b;
+	border-style: solid solid solid none; 
+	border-width: 1px;
+	color: #c0392b;
+	background: #f2ce8c;
+}
+
+/* FORM USER */
+
+.form_btn {
+	width: 20%;
+	background: #c0392b !important;
+	color: white !important;
+	margin-bottom: 5px;
+}
+.form_btn:focus {
+	box-shadow: none !important;
+	outline: 0px !important;
+}
+
+.container_form_user {
+	background-color: #f2ce8c; 
+	width: 40%; 
+	padding: 15px; 
+	border-radius: 5px 5px 5px 5px;
+}
+
+.image-cropper {
+	width: 100px;
+	height: 100px;
+	position: relative;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-bottom: 5px;
+}
+.profile-pic {
+	display: inline;
+	margin: 0 auto;
+	margin-left: -25%; //centers the image
+	height: 100%;
+	width: auto;
+}
+
+.form_btn_top {
+	width: 20%;
+	background: #c0392b !important;
+	color: white !important;
+}
+
+.btn_line{
+	float: left;
+	margin-right: 10px;
+}
+
+.btn_line_separator{
+	float: left;
+	margin-left: 15px;
+	margin-right: 10px;
+}
+
+.promo_filter{
+	/*margin-top: 15px;
+	margin-bottom: 30px;
+	padding-left: 15px;*/
+	/*background-color: #cccccc; */
+	/*font-family: Arial, Helvetica, sans-serif;*/
+	border-radius: 5px 5px 5px 5px;
+	padding: 8px 8px 8px 8px;
+	/*width: 20%;*/
+	/*font-size: 20px;*/
+	/*font-weight: bold;*/
+	border-color: #ffffff;
+	border-style: solid solid solid solid; 
+	border-width: 1px;
+	/*color: #c0392b;*/
+	/*background: #f2ce8c;*/
+}
+
+.filter-btn{
+	background: #c0392b !important;
+	color: white !important;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	
+}
+
+.container_for_cards {
+	background-color: #f2ce8c; 
+	width: 80%; 
+	padding: 15px; 
+	border-radius: 5px 5px 5px 5px;
+}
+

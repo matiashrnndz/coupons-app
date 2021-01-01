@@ -1,0 +1,50 @@
+<div class='page-title'>Get Demographic Report</div>
+
+<div class='container container_form_user'>
+
+  <div>
+    <%= form_for :demo_report, url: promotion_definition_demographic_report_view_path(@promotion_id), method: :get do |form| %>
+  
+      <div class="form-group">
+        <label><%= form.label :country %></label>
+        <div>
+          <%= form.text_field :country, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label><%= form.label :city %></label>
+        <div>
+          <%= form.text_field :city, class: 'form-control' %>
+        </div>
+      </div>
+  
+      <div class="form-group">
+       
+        <label>Age Group</label>
+        <div>
+          <%= form.select :age, options_for_select([["All", nil],["18-25", "18-25"],["25-40","25-40"], ["40-60","40-60"], ["60+", "60+"] ])%>
+        </div>
+        <small class="form-text text-muted">You can select one or more items.</small>
+      </div>
+
+      <div style="margin-top: 15px;">
+        <%= form.submit 'Get Report' , class: 'btn form_btn' %>
+      </div>
+    <% end %>
+  </div>
+    
+  <% if @count %>
+    <div style="margin-top: 10px; margin-bottom:20px;">
+      <div>
+        <label>Promotions matching criteria:</label> 
+        <textarea rows="5" class="form-control" style="font-size:20px;"> <%= @count %> </textarea>
+      </div>
+    </div>
+  <% end %>
+
+  <div>
+    <%= button_to('<< Back', root_path,  method: :get, class: 'btn btn-sm btn-outline-secondary') %>
+  </div>
+
+</div>

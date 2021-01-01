@@ -1,0 +1,39 @@
+<div class='page-title'>Report for <%= @promo_definition.name %></div>
+
+<div class='container container_form_user'>
+
+  <div style="margin-bottom: 5px; margin-top:20px;">
+    <div style="float: left; width: 50%; text-align:right;">Total calls:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<span class="badge badge-primary badge-pill" style="font-size:14px;"><%= @total_entries %></span></div>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">Successful calls:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<span class="badge badge-success badge-pill" style="font-size:14px;"><%= @positive_count %></span></div> 
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">Unsuccessful calls:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<span class="badge badge-danger badge-pill" style="font-size:14px;"><%= @negative_count %></span></div> 
+  </div>
+
+  <div style="margin-bottom: 5px; margin-top:20px;">
+    <div style="float: left; width: 50%; text-align:right;">Successful ratio:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<span class="badge badge-secondary badge-pill" style="font-size:14px;"><%= @ratio %></span></div> 
+  </div>
+
+  <div style="margin-bottom: 5px; margin-top: 20px;">
+    <div style="float: left; width: 50%; text-align:right;">Average response time:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<span class="badge badge-primary badge-pill" style="font-size:14px;"><%= @average_response_time %> ms </span></div>
+  </div>
+
+  <div style="margin-bottom: 5px;">
+    <div style="float: left; width: 50%; text-align:right;">Total spent:&nbsp;&nbsp;</div> 
+    <div>&nbsp;&nbsp;<span class="badge badge-primary badge-pill" style="font-size:14px;">$<%= @total_spent %></span></div>
+  </div>
+
+  <div style="margin-top: 25px;">  
+    <%= button_to('<< Back', promotion_definitions_path,  method: :get, class: 'btn btn-sm btn-outline-secondary') %>
+  </div>
+
+</div>

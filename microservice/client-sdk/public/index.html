@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="custom-style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+        <style>
+          body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #60a3bc !important;
+          }
+
+          .brand_logo {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            border: 2px solid #60a3bc;
+          }
+
+          .form_btn {
+            width: 20%;
+            background: #c0392b !important;
+            color: white !important;
+            margin-bottom: 5px;
+          }
+          .form_btn:focus {
+            box-shadow: none !important;
+            outline: 0px !important;
+          }
+
+          .form_btn_top {
+            width: 24%;
+            background: #c0392b !important;
+            color: white !important;
+          }
+        </style>
+        <script language='JavaScript'>
+            function addNewPair (form) {
+              var st = document.createTextNode(form.dinamic_key.value+': ');
+              var tf = document.createElement('input');
+              var br = document.createElement('br');
+              tf.setAttribute('type', 'text');
+              tf.setAttribute('name', 'metadata[attributes]['+ form.dinamic_key.value +']');
+              tf.setAttribute('value', form.dinamic_value.value);
+              document.getElementById('newData').appendChild(st);
+              document.getElementById('newData').appendChild(tf);
+              document.getElementById('newData').appendChild(br);
+            }
+            function addCouponCodeField(form){
+                var st = document.createTextNode('coupon_code: ');
+                var tf = document.createElement('input');
+                var br = document.createElement('br');
+                tf.setAttribute('type', 'text');
+                tf.setAttribute('required','');
+                tf.setAttribute('name', 'metadata[coupon_code]');
+                document.getElementById('newData').appendChild(st);
+                document.getElementById('newData').appendChild(tf);
+                document.getElementById('newData').appendChild(br);
+                removeButtons();
+            }
+            function addTransactionIdField(form){
+                var st = document.createTextNode('transaction_id: ');
+                var tf = document.createElement('input');
+                var br = document.createElement('br');
+                tf.setAttribute('type', 'text');
+                tf.setAttribute('required','');
+                tf.setAttribute('name', 'metadata[transaction_id]');
+                document.getElementById('newData').appendChild(st);
+                document.getElementById('newData').appendChild(tf);
+                document.getElementById('newData').appendChild(br);
+                removeButtons();
+            }
+            function removeUselessData(){
+                document.getElementById('dinkey').remove();
+                document.getElementById('dinval').remove();
+                document.getElementById('lblkey').remove();
+                document.getElementById('lblval').remove();
+                document.getElementById('addpair').remove();
+                removeOptionalFieldsNotUsed();
+                return true;
+            }
+
+            function removeOptionalFieldsNotUsed(){
+                var optcountry = document.getElementById('optcountryval').value;
+                var optcity = document.getElementById('optcityval').value;
+                var optbirth = document.getElementById('optbirthval').value;
+
+                if(optcountry == null || optcountry == '' || optcountry.trim().length == 0){
+                  document.getElementById('optcountryval').remove();
+                  document.getElementById('opt1').remove();
+                }
+
+                if(optcity == null || optcity == '' || optcity.trim().length == 0){
+                  document.getElementById('optcityval').remove();
+                  document.getElementById('opt2').remove();
+                }
+
+                if(optbirth == null || optbirth == '' || optbirth.trim().length == 0){
+                  document.getElementById('optbirthval').remove();
+                  document.getElementById('opt3').remove();
+                }
+            }
+            function removeButtons(){
+                document.getElementById('addcouponcode').remove();
+                document.getElementById('addtransactionid').remove();
+            }
+        </script>
+    </head>
+    <body>
+        <div class='container'>
+          <div class='d-flex justify-content-center'>
+            <img src='https://townplannerstl.com/wp-content/uploads/2016/03/Local-Coupons-circle.png' class='brand_logo' alt='Logo'>
+          </div>
+          <div class='d-flex justify-content-center'>
+            <form enctype='application/json' action='/process' method='post'  onsubmit='return removeUselessData()'>
+                <div class="form-group">
+                    <label>Authorization Token (required)</label>
+                    <div>
+                      <input class='form-control' type= 'text' name='token' size=70 required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Promotion Code (required)</label>
+                    <div>
+                      <input class='form-control' type='text' name='code' size=70 required>
+                    </div>
+                </div>
+                <p>
+                    <div id='newData'>
+                        Metadata<br>
+                        <div style="display: flex;">
+                          <div style="width: 12%;">
+                            <span>total: </span>
+                          </div>
+                          <div>
+                            <input  type='text' name='metadata[total]' required>(required)<br>
+                          </div>
+                        </div>
+
+                        <div style="display: flex;">
+                          <div style="width: 12%;">
+                            <span id='optcountrylbl'>country: </span>
+                          </div>
+                          <div>
+                            <input id='optcountryval' type='text' name='metadata[country]'><span id='opt1'>(optional, ISO 3166-1 format)</span><br>
+                          </div>
+                        </div>
+
+                        <div style="display: flex;">
+                          <div style="width: 12%;">
+                            <span id='optcitylbl'>city: </span>
+                          </div>
+                          <div>    
+                            <input id='optcityval' type='text' name='metadata[city]'><span id='opt2'>(optional, IATA format)</span><br>
+                          </div>
+                        </div>
+
+                        <div style="display: flex;">
+                          <div style="width: 12%;">
+                            <span id='optbirthlbl'>birthday: </span>
+                          </div>
+                          <div>    
+                            <input id='optbirthval' type='text' name='metadata[birth_date]'><span id='opt3'>(optional, MM/DD/YYYY format)</span><br>
+                          </div>
+                        </div>
+
+                        <button id='addcouponcode' type='button' onClick='addCouponCodeField(this.form)' class='btn form_btn_top btn-sm' style="border-top:10px;">Add Coupon Code</button>
+                        <button id='addtransactionid' type='button' onClick='addTransactionIdField(this.form)' class='btn form_btn_top btn-sm'>Add Transaction Id</button>
+                    </div>
+                    <span id='lblkey'>Key:</span>
+                    <input id='dinkey' type='text' name='dinamic_key'>
+                    <span id='lblval'>Value:</span>
+                    <input id='dinval' type='text' name='dinamic_value'>
+                    <button id='addpair' type='button' onClick='addNewPair(this.form)' class='btn form_btn_top btn-sm'>Add Key-Value pair</button>
+                </p>
+                <input type='submit' value='Evaluate' class='btn form_btn'>
+            </form>
+          </div>
+        </div>
+    </body>
+</html>

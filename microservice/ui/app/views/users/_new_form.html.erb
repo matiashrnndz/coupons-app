@@ -1,0 +1,48 @@
+<div style='width: 100%;'>
+  <%= form_for :user, url: users_path, method: :post do |f| %>
+
+    <div class="form-group">
+      <label>Organization Name</label>
+      <div>
+        <%= text_field_tag 'organization_name', nil, size: 40, required: true, placeholder: 'Organization Name', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Name</label>
+      <div>
+        <%= f.text_field :first_name, size: 40, required: true, placeholder: 'Name', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Last Name</label>
+      <div>
+        <%= f.text_field :last_name, size: 40, required: true, placeholder: 'Last Name', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <div>
+        <%= f.text_field :email, size: 40, required: true, placeholder: 'Email', class: 'form-control' %>
+      </div>
+    </div>
+
+    <div >
+      <div class="form-group">
+        <label>Password</label>
+        <%= f.password_field :password, size: 40, required: true, placeholder: 'Password', class: 'form-control' %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label>Password Confirmation</label>
+      <%= f.password_field :password_confirmation, size: 40, placeholder: 'Password Confirmation', class: 'form-control' %>
+    </div>
+
+    <div>
+      <%= f.submit 'Create User' , class: 'btn form_btn' %>
+    </div>
+  <% end %>
+</div>

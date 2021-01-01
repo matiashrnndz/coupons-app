@@ -1,0 +1,12 @@
+development:
+  host: localhost
+  port: 6379
+  db: 0
+
+production:
+  url: <%= ENV['REDISTOGO_URL'] %>
+
+test:
+  host: localhost
+  port: 6379
+  db: 1

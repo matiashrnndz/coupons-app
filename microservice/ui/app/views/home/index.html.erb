@@ -1,0 +1,29 @@
+<div class="signin-container" >
+  
+  <% if current_user.nil? %>
+
+    <div>
+      <h1>Welcome to Coupons!</h1><br>
+      <h2>Please Sign in</h2>
+
+      <%= form_with url: sessions_signin_path do |form| %>
+        <div>
+          <%= form.text_field 'email', size: 40, required: true, placeholder: 'Email' %>
+        </div>
+        <div>
+          <%= form.password_field 'password', size: 40, required: true, placeholder: 'Password' %>
+        </div>
+        <div>
+          <%= form.submit 'Sign in' %>
+        </div>
+      <% end %>
+      
+      <div>Don't have an account? Sign up <%= link_to('Here', new_user_path) %></div>
+    </div>
+  <% else %>
+  
+    <%= render 'promotions', locals: {promo_definitions: @promo_definitions} %>
+  
+  <% end %>
+
+</div>

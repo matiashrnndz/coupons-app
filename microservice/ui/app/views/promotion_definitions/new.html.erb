@@ -1,0 +1,74 @@
+<div class='page-title'>New promotion</div>
+
+<div class='container container_form_user'>
+
+  <div>
+
+    <%= form_for :promotion_definition, url: promotion_definitions_path, method: :post do |f| %>
+      <div class="form-group">
+        <label>Name</label>
+        <div>
+          <%= f.text_field :name, id: 'test',size: 40, required: true, placeholder: 'Name', class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Expiration Date</label>
+        <div>
+          <%= f.date_field :expiration_date, min: Date.today, required: true, class: 'form-control' %>
+        </div>
+      </div>
+      
+      <div>
+        <%= f.label 'Discount type: ' %>&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :discount_type, 'percentage', :checked => true %> 
+        <%= label :discount_type_percentage, 'Percentage' %>&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :discount_type, 'value' %>
+        <%= label :discount_type_value, 'Value' %>
+      </div>
+      
+      <div>
+        <%= f.label 'Promotion type:' %>&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :promotion_type, 'coupon', :checked => true %> 
+        <%= label :promotion_type_coupon, 'Coupon' %>&nbsp;&nbsp;&nbsp;
+        <%= f.radio_button :promotion_type, 'discount' %>
+        <%= label :promotion_type_discount, 'Discount' %>
+      </div>
+      
+      <div class="form-group">
+        <label>Value</label>
+        <div style="width:30%;">
+          <%= f.number_field :value, min: 0, required: true, class: 'form-control' %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Attributes</label>
+        <div>
+          <%= f.text_area :promotion_attributes, class: 'form-control' %>
+        </div>
+        <small class="form-text text-muted">Attributes must be inserted comma separated. Default attributes 'total' and ('coupon_code' or 'transaction_id') already included.</small>
+      </div>
+      
+      <div class="form-group">
+        <label>Conditions</label>
+        <div>
+          <%= f.text_area :conditions, class: 'form-control'%>
+        </div>
+        <small class="form-text text-muted">You can use AND, OR, <,>, <=,> =, = and the attributes specified above, you can also use numeric constants.</small>
+      </div>
+      
+      <div style="margin-top: 20px;">
+        <%= f.submit 'Create' , class: 'btn form_btn' %>
+      </div>
+      
+
+    <% end %>
+
+  </div>
+  
+  <div >  
+    <%= button_to('<< Back', root_path,  method: :get, class: 'btn btn-sm btn-outline-secondary') %>
+  </div>
+
+</div>

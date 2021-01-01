@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>The following promotions will expire tomorrow: </h2>
+    <ul>
+      <% @soon_expired_promotions.each do |promo| %>
+        <li> <%= promo %> </li>
+      <% end %>
+    </ul>
+    
+    <h2>The following promotions expired today: </h2>
+    <ul>
+      <% @expired_promotions.each do |promo| %>
+        <li> <%= promo %> </li>
+      <% end %>
+    </ul>
+  </body>
+</html>

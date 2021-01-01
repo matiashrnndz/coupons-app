@@ -1,0 +1,44 @@
+<h2> Promotions</h2>
+
+<div>
+  <ol>
+    <% @promo_definitions.each do |promo| %>
+      <li>
+        <div>
+          <ul>
+            <li>
+              Name: <%=link_to(promo.name, promo) %>
+            </li>
+            <li>
+              State: <%= promo.promotion_state %>
+            </li>
+            <li>
+              Type: <%= promo.promotion_type %>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <% if promo.promotion_type == 'coupon' %>
+        <div>
+          <%= link_to('Generate coupons', new_promotion_definition_promotion_path(promo.id)) %>
+        </div>
+      <% end %>
+      <% if current_user_is_admin %>
+        <div>
+          <%= link_to('Edit', edit_promotion_definition_path(promo)) %>
+        </div>
+        <div>
+          <%= link_to('Delete', promotion_definition_path(promo), method: :delete) %>
+        </div>
+      <% end %>
+    <%end%>
+  </ol>
+  <% if current_user_is_admin %>
+    <div>
+    <%= link_to('Add Promotion', new_promotion_definition_path) %>
+    </div>
+  <% end %>
+  <div>
+    <%= link_to('Profile', current_user) %>
+  </div>
+<div>

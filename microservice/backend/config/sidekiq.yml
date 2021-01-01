@@ -1,0 +1,4 @@
+:schedule:
+  promo_reminder:
+    cron: '0 8 * * * *'   # Runs ever day at 8 am
+    class: PromotionReminderWorker

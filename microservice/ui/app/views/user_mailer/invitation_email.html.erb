@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @sender.first_name %> has invited you to <%= @organization.name %></h1>
+    <p>
+      Your password is <%= @pass %>, please change it immediately!.
+    </p>
+    <p>
+      To accept, just follow this link: <%= @url %>.
+    </p>
+  </body>
+</html>

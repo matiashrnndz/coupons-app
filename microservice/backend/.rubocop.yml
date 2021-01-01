@@ -1,0 +1,64 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - vendor/**/*
+    - .circleci/*
+    - db/schema.rb
+    - db/migrate/**
+    - node_modules/**/*
+    - bin/**/*
+
+Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 15
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 25
+  Exclude:
+    - config/**/*
+    - spec/**/*
+
+Metrics/BlockNesting:
+  Max: 4
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 200
+
+Metrics/CyclomaticComplexity:
+  Max: 6
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 24
+
+Metrics/ModuleLength:
+  CountComments: false
+  Max: 200
+
+Metrics/LineLength:
+  Max: 110
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+  Exclude:
+    - config/**/*
+
+Metrics/ParameterLists:
+  Max: 5
+  CountKeywordArgs: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ModuleFunction:
+  Enabled: false
+
+LexicallyScopedActionFilter:
+  Exclude:
+      - app/controllers/**/**

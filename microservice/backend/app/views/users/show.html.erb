@@ -1,0 +1,36 @@
+<div class='page-title'>User Profile</div>
+
+<div class='container container_form_user'>
+
+  <div style="margin-bottom: 10px;">
+    
+    <div style='text-align:center; margin-bottom: 20px;'>
+      <div style="display:flex; align-items:center; justify-content:center;">
+        <% if @user.avatar.attached? %>
+            <div class="image-cropper">
+              <image tag="image.jpg" src="<%= (url_for(@user.avatar)) %>" class='profile-pic'>
+            </div>
+        <% end %>
+      </div>
+      <%= @user.first_name %> <%= @user.last_name %>
+    </div>
+
+    <div style="margin-bottom: 5px;"><div style="float: left; width: 50%; text-align:right;">Name:&nbsp;&nbsp;</div> <div>&nbsp;&nbsp;<strong><%= @user.first_name %></strong></div></div>
+    
+    <div style="margin-bottom: 5px;"><div style="float: left; width: 50%; text-align:right;">Last Name:&nbsp;&nbsp;</div> <div>&nbsp;&nbsp;<strong><%= @user.last_name %></strong></div></div>
+    
+    <div style="margin-bottom: 5px;"><div style="float: left; width: 50%; text-align:right;">Email:&nbsp;&nbsp;</div> <div>&nbsp;&nbsp;<strong><%= @user.email %></strong></div></div>
+    
+    <div style="margin-bottom: 5px;"><div style="float: left; width: 50%; text-align:right;">Organization:&nbsp;&nbsp;</div> <div style="display: flex;">&nbsp;&nbsp;<strong><%=@user.organization.name %></strong>&nbsp;&nbsp;<%= button_to('View', @user.organization, method: :get, class: 'btn btn-sm btn-outline-info py-0') %></div></div>
+
+  </div>
+
+  <% if current_user.id == @user.id %>
+    
+    <div>
+      <%= button_to('Edit', edit_user_path,  method: :get, class: 'btn form_btn') %>
+    </div>
+  
+  <% end %>
+
+</div>

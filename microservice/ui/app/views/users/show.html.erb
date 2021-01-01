@@ -1,0 +1,37 @@
+<div class='page-title'>User Profile</div>
+
+<div class='container container_form_user'>
+
+  <div style="margin-bottom: 10px;">
+    
+    <div style='text-align:center; margin-bottom: 20px;'>
+      <div style="display:flex; align-items:center; justify-content:center;">
+      </div>
+      <%= @user['attributes']['first_name'] %> <%= @user['attributes']['last_name'] %>
+    </div>
+
+    <div style="margin-bottom: 5px;"><div style="float: left; width: 50%; text-align:right;">Name:&nbsp;&nbsp;</div> <div>&nbsp;<strong><%= @user['attributes']['first_name'] %></strong></div></div>
+    
+    <div style="margin-bottom: 5px;"><div style="float: left; width: 50%; text-align:right;">Last Name:&nbsp;&nbsp;</div> <div>&nbsp;<strong><%= @user['attributes']['last_name'] %></strong></div></div>
+    
+    <div style="margin-bottom: 5px;"><div style="float: left; width: 50%; text-align:right;">Email:&nbsp;&nbsp;</div> <div>&nbsp;<strong><%= @user['attributes']['email'] %></strong></div></div>
+    
+    <div style="margin-bottom: 5px;"><div style="float: left; width: 50%; text-align:right;">Role:&nbsp;&nbsp;</div> <div>&nbsp;<strong><%= @user['attributes']['role'] %></strong></div></div>
+    
+    <div style="margin-bottom: 5px;"><div style="float: left; width: 50%; text-align:right;">Organization:&nbsp;&nbsp;</div> <div style="display: flex;">&nbsp;<strong><%= @user['attributes']['organization']['name'] %></strong>&nbsp;&nbsp;
+    
+    <% unless current_user_is_financer %>
+      <%= button_to('View', organizations_path, method: :get, class: 'btn btn-sm btn-outline-info py-0') %></div></div>
+    <% end %>
+
+  </div>
+
+  <% if current_user['data']['id'] == @user['id'] %>
+    
+    <div>
+      <%= button_to('Edit', edit_user_path(@user['id']),  method: :get, class: 'btn form_btn') %>
+    </div>
+  
+  <% end %>
+
+</div>

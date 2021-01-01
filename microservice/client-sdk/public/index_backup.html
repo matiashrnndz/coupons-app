@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title></title>
+        <script language='JavaScript'>
+            function addNewPair (form) {
+              var st = document.createTextNode(form.dinamic_key.value+': ');
+              var tf = document.createElement('input');
+              var br = document.createElement('br');
+              tf.setAttribute('type', 'text');
+              tf.setAttribute('name', 'metadata[attributes]['+ form.dinamic_key.value +']');
+              tf.setAttribute('value', form.dinamic_value.value);
+              document.getElementById('newData').appendChild(st);
+              document.getElementById('newData').appendChild(tf);
+              document.getElementById('newData').appendChild(br);
+            }
+            function addCouponCodeField(form){
+                var st = document.createTextNode('coupon_code: ');
+                var tf = document.createElement('input');
+                var br = document.createElement('br');
+                tf.setAttribute('type', 'text');
+                tf.setAttribute('required','');
+                tf.setAttribute('name', 'metadata[coupon_code]');
+                document.getElementById('newData').appendChild(st);
+                document.getElementById('newData').appendChild(tf);
+                document.getElementById('newData').appendChild(br);
+                removeButtons();
+            }
+            function addTransactionIdField(form){
+                var st = document.createTextNode('transaction_id: ');
+                var tf = document.createElement('input');
+                var br = document.createElement('br');
+                tf.setAttribute('type', 'text');
+                tf.setAttribute('required','');
+                tf.setAttribute('name', 'metadata[transaction_id]');
+                document.getElementById('newData').appendChild(st);
+                document.getElementById('newData').appendChild(tf);
+                document.getElementById('newData').appendChild(br);
+                removeButtons();
+            }
+            function removeUselessData(){
+                document.getElementById('dinkey').remove();
+                document.getElementById('dinval').remove();
+                document.getElementById('lblkey').remove();
+                document.getElementById('lblval').remove();
+                document.getElementById('addpair').remove();
+                removeOptionalFieldsNotUsed();
+                return true;
+            }
+
+            function removeOptionalFieldsNotUsed(){
+                var optcountry = document.getElementById('optcountryval').value;
+                var optcity = document.getElementById('optcityval').value;
+                var optbirth = document.getElementById('optbirthval').value;
+                
+                if(optcountry == null || optcountry == '' || optcountry.trim().length == 0){
+                  document.getElementById('optcountryval').remove();
+                  document.getElementById('opt1').remove();
+                }
+
+                if(optcity == null || optcity == '' || optcity.trim().length == 0){
+                  document.getElementById('optcityval').remove();
+                  document.getElementById('opt2').remove();
+                }
+
+                if(optbirth == null || optbirth == '' || optbirth.trim().length == 0){
+                  document.getElementById('optbirthval').remove();
+                  document.getElementById('opt3').remove();
+                }
+            }
+            function removeButtons(){    
+                document.getElementById('addcouponcode').remove();
+                document.getElementById('addtransactionid').remove();
+            }
+        </script>
+    </head>
+    <body>
+        <form enctype='application/json' action='/process' method='post'  onsubmit='return removeUselessData()'>
+            <p>
+                Authorization Token<br>
+                <input type= 'text' name='token' size=70 required>(required)
+            </p>
+            <p>
+                Promotion Code<br>
+                <input type='text' name='code' size=70 required>(required)
+            </p>
+            <p>
+                
+                <div id='newData'>
+                    Metadata<br>
+                    <span>total: </span>
+                    <input type='text' name='metadata[total]' required>(required)<br>
+                    <span id='optcountrylbl'>country: </span>
+                    <input id='optcountryval' type='text' name='metadata[country]'><span id='opt1'>(optional, ISO 3166-1 format)</span><br>
+                    <span id='optcitylbl'>city: </span>
+                    <input id='optcityval' type='text' name='metadata[city]'><span id='opt2'>(optional, IATA format)</span><br>
+                    <span id='optbirthlbl'>birthday: </span>
+                    <input id='optbirthval' type='text' name='metadata[birth_date]'><span id='opt3'>(optional, MM/DD/YYYY format)</span><br>
+                    <button id='addcouponcode' type='button' onClick='addCouponCodeField(this.form)'>Add Coupon Code</button>
+                    <button id='addtransactionid' type='button' onClick='addTransactionIdField(this.form)'>Add Transaction Id</button>
+                    
+
+                </div>
+                <span id='lblkey'>KEY:</span>
+                <input id='dinkey' type='text' name='dinamic_key'>
+                <span id='lblval'>VALUE:</span>
+                <input id='dinval' type='text' name='dinamic_value'>
+                <button id='addpair' type='button' onClick='addNewPair(this.form)'>Add Key-Value pair</button>
+            </p>
+            <input type='submit' value='Evaluate'>
+        </form>
+    </body>
+</html>
+
+
