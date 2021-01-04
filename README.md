@@ -1,9 +1,14 @@
 # coupons-app (microservices example)
 
-[Project done on Nov 2019.]
-
 Coupons is a microservice example that shows the transformation from a basic monolith to a basic microservice app.
 On every app contained you will find a readme that explains it.
+
+## Details:
+
+- Date: Nov 2019
+- Developed by: Esteban Muzio, Diego Klappenbach & Matias Hernández
+- Language: Ruby, Node.js
+- Subject: Arquitectura de Software en la Práctica
 
 ## Purpose
 
